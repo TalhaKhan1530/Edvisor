@@ -18,12 +18,8 @@
         android:textColorHighlight="#1B0505"
         android:textColorHint="#BD2D2D"
         android:textSize="46sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.736"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.073"
+        tools:layout_editor_absoluteX="153dp"
+        tools:layout_editor_absoluteY="38dp"
         tools:ignore="MissingConstraints" />
 
     <Button
@@ -32,25 +28,19 @@
         android:layout_height="74dp"
         android:background="#A939BC"
         android:text="Customer"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.17"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.582"
+        tools:layout_editor_absoluteX="70dp"
+        tools:layout_editor_absoluteY="444dp"
         tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="95dp"
         android:layout_height="120dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.527"
+        app:layout_constraintHorizontal_bias="0.532"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.253"
         app:srcCompat="@drawable/daco_1849574"
+        tools:layout_editor_absoluteY="153dp"
         tools:ignore="MissingConstraints" />
 
     <Button
@@ -59,12 +49,10 @@
         android:layout_height="78dp"
         android:background="#A939BC"
         android:text="Edvisor"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.883"
+        app:layout_constraintHorizontal_bias="0.869"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.58"
+        tools:layout_editor_absoluteY="444dp"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
