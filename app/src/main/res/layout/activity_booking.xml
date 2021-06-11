@@ -5,7 +5,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#070707"
-    tools:context=".MainActivity">
+    tools:context=".Customer_login">
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="133dp"
+        android:layout_height="70dp"
+        android:background="#A939BC"
+        android:text="Show Current Appointments"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.78"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="133dp"
+        android:layout_height="70dp"
+        android:background="#A939BC"
+        android:text="Show Current Appointments"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.78"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/editTextTextPersonName"
@@ -18,41 +46,51 @@
         android:textColorHighlight="#1B0505"
         android:textColorHint="#BD2D2D"
         android:textSize="46sp"
-        tools:layout_editor_absoluteX="153dp"
-        tools:layout_editor_absoluteY="38dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.065"
         tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/button1"
-        android:layout_width="125dp"
-        android:layout_height="74dp"
+        android:layout_width="132dp"
+        android:layout_height="75dp"
         android:background="#A939BC"
-        android:text="Customer"
-        tools:layout_editor_absoluteX="70dp"
-        tools:layout_editor_absoluteY="444dp"
+        android:text="Book Appointment"
+        android:onClick="Book_Appointment"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="95dp"
         android:layout_height="120dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.532"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.312"
         app:srcCompat="@drawable/daco_1849574"
-        tools:layout_editor_absoluteY="153dp"
         tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="149dp"
-        android:layout_height="78dp"
+        android:layout_width="133dp"
+        android:layout_height="70dp"
         android:background="#A939BC"
-        android:text="Edvisor"
+        android:text="Show Past Appointments"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.869"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="444dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.632"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

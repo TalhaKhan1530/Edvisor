@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#070707"
+    android:onClick="customer_login"
     tools:context=".MainActivity">
 
     <EditText
@@ -31,6 +32,7 @@
         android:layout_width="125dp"
         android:layout_height="74dp"
         android:background="#A939BC"
+        android:onClick="customer_login"
         android:text="Customer"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
