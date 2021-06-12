@@ -41,5 +41,13 @@ public class Customer_login extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void Show_Booking_Past(View v) {
+
+        Intent intent = new Intent(this,Past_Appointments.class);
+        intent.putExtra("customer",customer);
+        intent.putExtra("worker",worker);
+        startActivity(intent);
+    }
+
 
 }
