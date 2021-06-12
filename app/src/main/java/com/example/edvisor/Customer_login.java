@@ -40,6 +40,10 @@ public class Customer_login extends AppCompatActivity {
         intent.putExtra("worker",worker);
         startActivity(intent);
     }
-
+    public void chat(View v)
+    {
+        Intent intent = new Intent(this,Send_chat.class);
+        startActivity(intent);
+    }
 
 }

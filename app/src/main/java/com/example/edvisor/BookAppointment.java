@@ -13,6 +13,9 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 
 
@@ -23,6 +26,12 @@ public class BookAppointment extends AppCompatActivity {
     Edvisor worker;
     ListView list;
     Booking booking;
+    ArrayList<Booking> booking2=new ArrayList<>();
+    FirebaseDatabase database=FirebaseDatabase.getInstance();
+    DatabaseReference myRef=database.getReference().child("booking");
+    ArrayAdapter arrayAdapter;
+    ArrayList<Edvisor> arrayList ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,9 +40,15 @@ public class BookAppointment extends AppCompatActivity {
         worker = (Edvisor) intent.getSerializableExtra("worker");
         setContentView(R.layout.activity_book_appointment);
         list =(ListView) findViewById( R.id.listbooking);
-        ArrayAdapter arrayAdapter;
-        final ArrayList<Edvisor> arrayList = new ArrayList<Edvisor>();
+
+         arrayList = new ArrayList<Edvisor>();
+
         arrayList.add(worker);
+        Edvisor worker2=new Edvisor();
+        worker2.id=123;
+        worker2.average_rating=3;
+        worker2.Name="name";
+        arrayList.add(worker2);
         arrayAdapter = new Expert_List_adapter(this,arrayList);
         list.setAdapter(arrayAdapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -44,7 +59,18 @@ public class BookAppointment extends AppCompatActivity {
                 booking.expert_id = arrayList.get(i).id;
                 booking.current_status=true;
                 //db.add(booking);
+                booking2.add(booking);
+                myRef.setValue(booking2);
+                booking = new Booking();
+                booking.customer_id = 123;
+                booking.expert_id = arrayList.get(i).id;
+                booking.current_status=true;
+                myRef.setValue(booking2);
 
+
+
+
+                System.out.println("customer id   "+booking.expert_id);
                 Context context=getApplicationContext();
                 CharSequence text = "Booking Successful";
                 int duration = Toast.LENGTH_SHORT;
