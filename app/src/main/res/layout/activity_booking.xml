@@ -26,6 +26,7 @@
         android:layout_width="133dp"
         android:layout_height="70dp"
         android:background="#A939BC"
+        android:onClick="Show_Booking_Appointments"
         android:text="Show Current Appointments"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
