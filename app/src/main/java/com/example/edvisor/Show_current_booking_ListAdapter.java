@@ -42,21 +42,26 @@ public class Show_current_booking_ListAdapter extends ArrayAdapter<Booking> {
             layout.setOrientation(LinearLayout.HORIZONTAL);
 
             Button button = new Button(getContext());
-
+            button.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
             //CheckBox button = (CheckBox)((LayoutInflater)getSystemService(LAYOUT_INFLATER_SERVICE)).inflate(R.layout.check_right_checkbox,null);
             //rootView.addView(button);
-            button.setId(2);
             button.setText("X");
+            button.setId(2);
             layout.addView(button);
 
             TextView text = new TextView(getContext());
             text.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1f));
             text.setId(1);
+
+
+
+            layout.addView(text);
+
             convertView = layout;
         }
 
         TextView text = (TextView) convertView.findViewById(1);
-        text.setText("View my View");
+        text.setText(note.getcontent());
 
         Button button = (Button) convertView.findViewById(2);
         // button.setText("Add");
@@ -73,7 +78,7 @@ public class Show_current_booking_ListAdapter extends ArrayAdapter<Booking> {
 
             }
         });
-                return convertView;
+        return convertView;
     }
 
 

@@ -9,4 +9,9 @@ public class Booking {
     public boolean current_status;
     LocalDateTime startTime;
     LocalDateTime endTime;
+
+    public String getcontent()
+    {
+        return id + " "+customer_id+" "+expert_id;
+    }
 }
