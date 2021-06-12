@@ -33,4 +33,13 @@ public class Customer_login extends AppCompatActivity {
         intent.putExtra("worker",worker);
         startActivity(intent);
     }
+    public void Show_Booking_Appointments(View v) {
+
+        Intent intent = new Intent(this,Show_current_Booking.class);
+        intent.putExtra("customer",customer);
+        intent.putExtra("worker",worker);
+        startActivity(intent);
+    }
+
+
 }
