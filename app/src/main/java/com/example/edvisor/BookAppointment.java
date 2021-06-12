@@ -32,7 +32,9 @@ public class BookAppointment extends AppCompatActivity {
         setContentView(R.layout.activity_book_appointment);
         list =(ListView) findViewById( R.id.listbooking);
         ArrayAdapter arrayAdapter;
-        ArrayList<Edvisor> arrayList = new ArrayList<Edvisor>();
+        final ArrayList<Edvisor> arrayList = new ArrayList<Edvisor>();
+        arrayList.add(worker);
+        arrayList.add(worker);
         arrayList.add(worker);
         arrayAdapter = new Expert_List_adapter(this,arrayList);
         list.setAdapter(arrayAdapter);
@@ -41,7 +43,9 @@ public class BookAppointment extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 booking = new Booking();
                 booking.customer_id = customer.id;
-
+                booking.expert_id = arrayList.get(i).id;
+                booking.current_status=true;
+                //db.add(booking);
                 Context context=getApplicationContext();
                 CharSequence text = "Booking Successful";
                 int duration = Toast.LENGTH_SHORT;
