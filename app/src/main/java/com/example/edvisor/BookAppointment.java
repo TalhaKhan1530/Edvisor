@@ -23,7 +23,7 @@ import java.util.ArrayList;
 public class BookAppointment extends AppCompatActivity {
 
     Customer customer;
-    Edvisor worker;
+    ArrayList<Edvisor> worker=new ArrayList<>();
     ListView list;
     Booking booking;
     ArrayList<Booking> booking2=new ArrayList<>();
@@ -31,25 +31,24 @@ public class BookAppointment extends AppCompatActivity {
     DatabaseReference myRef=database.getReference().child("booking");
     ArrayAdapter arrayAdapter;
     ArrayList<Edvisor> arrayList ;
+    DataBase_Implementation db=new DataBase_Implementation();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         customer = (Customer) intent.getSerializableExtra("customer");
-        worker = (Edvisor) intent.getSerializableExtra("worker");
+        worker = (ArrayList<Edvisor>) intent.getSerializableExtra("worker");
         setContentView(R.layout.activity_book_appointment);
         list =(ListView) findViewById( R.id.listbooking);
 
-         arrayList = new ArrayList<Edvisor>();
 
-        arrayList.add(worker);
         Edvisor worker2=new Edvisor();
         worker2.id=123;
         worker2.average_rating=3;
         worker2.Name="name";
-        arrayList.add(worker2);
-        arrayAdapter = new Expert_List_adapter(this,arrayList);
+        worker.add(worker2);
+        arrayAdapter = new Expert_List_adapter(this,worker);
         list.setAdapter(arrayAdapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -60,13 +59,27 @@ public class BookAppointment extends AppCompatActivity {
                 booking.current_status=true;
                 //db.add(booking);
                 booking2.add(booking);
-                myRef.setValue(booking2);
-                booking = new Booking();
+
+
+               // myRef.setValue(booking2);
+                //db.Save_Booking(booking2)
+
+                DatabaseReference postsRef = myRef.child("booking");
+
+                DatabaseReference newPostRef = postsRef.push();
+                newPostRef.setValue(booking);
+                newPostRef.setValue(booking);
+                //newPostRef.setValueAsync(new Post("gracehop", "Announcing COBOL, a New Programming Language"));
+
+
+               /* booking = new Booking();
                 booking.customer_id = 123;
                 booking.expert_id = arrayList.get(i).id;
                 booking.current_status=true;
                 myRef.setValue(booking2);
 
+
+                */
 
 
 

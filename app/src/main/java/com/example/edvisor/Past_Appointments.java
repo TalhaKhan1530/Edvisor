@@ -41,9 +41,10 @@ public class Past_Appointments extends AppCompatActivity {
         send.add(o2);
 
 
-        myListView=new Adapter_past_Appointments(this,send);
+        Context context= this;
+        myListView=new Adapter_past_Appointments(this,send,context);
         list.setAdapter(myListView);
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        /*list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
@@ -53,5 +54,7 @@ public class Past_Appointments extends AppCompatActivity {
         });
 
 
+
+         */
     }
 }

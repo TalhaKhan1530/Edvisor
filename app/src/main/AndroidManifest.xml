@@ -12,6 +12,7 @@
         <activity android:name=".Send_chat"></activity>
         <activity android:name=".Rating_Complaint_Fav_Clicker" />
         <activity android:name=".Show_current_Booking" />
+        <activity android:name=".Past_Appointments" />
         <activity android:name=".BookAppointment" />
         <activity android:name=".Customer_login" />
         <activity android:name=".MainActivity">
@@ -21,6 +22,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service android:name="DataSyncService" />
+
     </application>
 
 </manifest>

@@ -26,11 +26,13 @@ import java.util.ArrayList;
 
 public class Adapter_past_Appointments extends ArrayAdapter<Booking> {
 
+    Context our_context;
 
     private ArrayList<Booking> notes;
 
-    public Adapter_past_Appointments(Context context, ArrayList<Booking> notes) {
+    public Adapter_past_Appointments(Context context, ArrayList<Booking> notes,Context our_context) {
         super(context, 0, notes);
+        this.our_context=our_context;
         this.notes = notes;
     }
 
@@ -99,6 +101,9 @@ public class Adapter_past_Appointments extends ArrayAdapter<Booking> {
             @Override
 
             public void onClick(View v) {
+
+                Intent intent= new Intent (our_context,Rating_Complaint_Fav_Clicker.class);
+                our_context.startActivity(intent);
 
 
             }
