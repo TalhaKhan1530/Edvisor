@@ -31,7 +31,7 @@ public class BookAppointment extends AppCompatActivity {
     DatabaseReference myRef=database.getReference().child("booking");
     ArrayAdapter arrayAdapter;
     ArrayList<Edvisor> arrayList ;
-    DataBase_Implementation db=new DataBase_Implementation();
+    DataBase_Implementation db=new DataBase_Implementation(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
