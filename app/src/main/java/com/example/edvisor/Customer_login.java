@@ -106,4 +106,10 @@ public class Customer_login extends AppCompatActivity {
            System.out.println(intent.getStringExtra("broadmessage"));
        }
    };
+
+    public void Connect(View v)
+    {
+        Intent intent = new Intent(this,SiteWebView.class);
+        startActivity(intent);
+    }
 }
