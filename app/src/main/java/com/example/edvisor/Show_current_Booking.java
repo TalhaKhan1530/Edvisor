@@ -19,7 +19,7 @@ public class Show_current_Booking extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         Intent intent = getIntent();
         Customer customer = (Customer) intent.getSerializableExtra("customer");
-        Edvisor worker = (Edvisor) intent.getSerializableExtra("worker");
+        //Edvisor worker = (Edvisor) intent.getSerializableExtra("worker");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_current__booking);
 

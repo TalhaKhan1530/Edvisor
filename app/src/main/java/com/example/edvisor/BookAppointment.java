@@ -46,10 +46,26 @@ public class BookAppointment extends AppCompatActivity {
         Edvisor worker2=new Edvisor();
         worker2.id=123;
         worker2.average_rating=3;
-        worker2.Name="name";
+        worker2.Name="talha";
         worker=new ArrayList<Edvisor>();
         worker.add(worker2);
         worker.add(worker2);
+
+        Booking b1=new Booking();
+        b1.expert_id=1;
+        b1.customer_id=1;
+        b1.id=1;
+        b1.current_status=true;
+        booking2.add(b1);
+        b1.expert_id=2;
+        b1.customer_id=1;
+        b1.id=2;
+        b1.current_status=true;
+
+        booking2.add(b1);
+        myRef.setValue(booking2);
+        final ArrayList< Booking> bookings=new ArrayList<>();
+
         arrayAdapter = new Expert_List_adapter(this,worker);
         list.setAdapter(arrayAdapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -59,10 +75,14 @@ public class BookAppointment extends AppCompatActivity {
 
 
                 Context context=getApplicationContext();
+                bookings.add(booking2.get(i));
+                myRef.setValue(bookings);
+
                 CharSequence text = "Booking Successful";
                 int duration = Toast.LENGTH_SHORT;
                 Toast toast = Toast.makeText(context,text,duration);
                 toast.show();
+
 
             }
         });

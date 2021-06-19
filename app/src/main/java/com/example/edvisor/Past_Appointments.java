@@ -45,19 +45,21 @@ public class Past_Appointments extends AppCompatActivity {
 
         list = (ListView) findViewById(R.id.current_booking);
 
-        Booking o1 = new Booking();
-        o1.id = 1;
-        o1.customer_id = 1;
-        o1.expert_id = 2;
-        o1.current_status = false;
-        Booking o2 = new Booking();
-        o2.id = 6;
-        o2.customer_id = 5;
-        o2.expert_id = 4;
-        o2.current_status = false;
+        Booking b1=new Booking();
+        b1.expert_id=1;
+        b1.customer_id=1;
+        b1.id=1;
+        b1.current_status=true;
+
+
         send = new ArrayList<Booking>();
-        send.add(o1);
-        send.add(o2);
+        send.add(b1);
+
+        b1.expert_id=2;
+        b1.customer_id=1;
+        b1.id=2;
+        b1.current_status=true;
+        send.add(b1);
         myRef2.setValue(send);
 
         Context context = this;

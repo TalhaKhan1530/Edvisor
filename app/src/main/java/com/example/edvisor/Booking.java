@@ -12,6 +12,18 @@ public class Booking {
 
     public String getcontent()
     {
-        return id + " "+customer_id+" "+expert_id;
+        String customer=new String();
+        String worker=new String();
+        if (id==1)
+        {
+            worker="Bilal";
+
+        }
+        else
+        {
+            worker="arsalan";
+        }
+
+        return "Booking id:"+id + "   Expert name: "+worker+" ( "+expert_id + ")";
     }
 }

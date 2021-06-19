@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         worker.average_rating=4.3f;
         workers.add(worker);
         worker= new Edvisor();
-        worker.Name="talha";
+        worker.Name="arslan";
         worker.id=123;
         worker.expert_in="advocate";
         worker.average_rating=4.3f;
