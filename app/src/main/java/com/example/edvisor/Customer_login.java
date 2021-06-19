@@ -41,8 +41,8 @@ public class Customer_login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_booking);
         Intent intent = getIntent();
-        customer = (Customer) intent.getSerializableExtra("customer");
-        worker = (ArrayList<Edvisor>) intent.getSerializableExtra("worker");
+        //customer = (Customer) intent.getSerializableExtra("customer");
+        //worker = (ArrayList<Edvisor>) intent.getSerializableExtra("worker");
 
 
     }
