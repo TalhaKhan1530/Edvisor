@@ -36,9 +36,11 @@ public class MainActivity extends AppCompatActivity {
     Edvisor worker;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference().child("customer");
+    DatabaseReference myRef2 = database.getReference().child("worker");
     DataBase_Implementation db;
     DataSyncService dataService;
     ConnectivityReceiver receiver;
+    ArrayList<Edvisor> workers=new ArrayList<>();
     boolean bound = false;
 
 
@@ -47,12 +49,29 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         DataBase_Implementation db = new DataBase_Implementation(this);
 
-        db=new DataBase_Implementation(this);
+
         customer1=new Customer();
-        customer1.id=1;
-        customer1.name="Ali";
-        customer1.payment_method="Cash";
-       // System.out.println(db.Save_Customer(customer1));
+        customer1.id=123;
+        customer1.name="noor";
+        customer1.payment_method="card";
+        db.Save_Customer(customer1,myRef);
+
+        worker= new Edvisor();
+        worker.Name="Bilal";
+        worker.id=1;
+        worker.expert_in="Law";
+        worker.average_rating=4.3f;
+        workers.add(worker);
+        worker= new Edvisor();
+        worker.Name="talha";
+        worker.id=123;
+        worker.expert_in="advocate";
+        worker.average_rating=4.3f;
+        workers.add(worker);
+        db.Save_Edvisor(workers,myRef2);
+
+
+
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
             public void onInitializationComplete(InitializationStatus initializationStatus) {
@@ -63,36 +82,11 @@ public class MainActivity extends AppCompatActivity {
         // AdRequest adRequest = new AdRequest.Builder().build();
         // mAdView.loadAd(adRequest);
 
-        /*mAdView.setAdListener(new AdListener() {
-            @Override
-            public void onAdLoaded() {
-                // Code to be executed when an ad finishes loading.
-                super.onAdLoaded();
-            }
 
-            @Override
-            public void onAdFailedToLoad(LoadAdError adError) {
-                // Code to be executed when an ad request fails.
-            }
-
-            @Override
-            public void onAdOpened() {
-                // Code to be executed when an ad opens an overlay that
-                // covers the screen.
-            }
-
-            @Override
-            public void onAdClicked() {
-                // Code to be executed when the user clicks on an ad.
-            }
-
-            @Override
-            public void onAdClosed() {
-                // Code to be executed when the user is about to return
-                // to the app after tapping on an ad.
-            }
-        });*/
         setContentView(R.layout.activity_main);
+
+        System.out.println("on create instance");
+
     }
     private void showMessage(String message){
         Toast toast = Toast.makeText(this,message,Toast.LENGTH_SHORT);
@@ -100,20 +94,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void customer_login(View v) {
-        customer1=new Customer();
-        customer1.id=1;
-        customer1.name="Ali";
-        customer1.payment_method="Cash";
 
-        //db.Save_Customer(customer1);
-        worker= new Edvisor();
-        worker.Name="Bilal";
-        worker.id=1;
-        worker.expert_in="Law";
-        worker.average_rating=4.3f;
-        ArrayList<Edvisor> workers=new ArrayList<>();
-        workers.add(worker);
-        //db.Save_Edvisor(workers);
+
 
         Intent intent = new Intent(this, Customer_login.class);
         intent.putExtra("customer",customer1);
@@ -121,6 +103,37 @@ public class MainActivity extends AppCompatActivity {
         Intent intent2 = new Intent("brodmessage");
         intent2.putExtra("broadmessage", "broad cast message sent");
         LocalBroadcastManager.getInstance(context).sendBroadcast(intent2);
+
+        //////////////////////////////////// load customer
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                customer1 = (Customer) dataSnapshot.getValue(Customer.class);
+                System.out.println("customer1  "+customer1.name);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+
+                System.out.println("failed to connect");
+            }
+        });
+        ////////////////////////////////////// loasd workersssss
+        myRef2.addValueEventListener(new ValueEventListener() {
+            @Override
+
+            public void onDataChange(DataSnapshot dataSnapshot) {
+               workers=new ArrayList<Edvisor>();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+
+                System.out.println("failed to connect");
+            }
+        });
 
         startActivity(intent);
 
