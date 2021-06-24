@@ -18,6 +18,7 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 //import com.google.android.gms.ads.initialization.InitializationStatus;
 //import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,6 +32,7 @@ import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
+    private FirebaseAnalytics mFirebaseAnalytics;
     private AdView mAdView;
     Customer customer1;
     Edvisor worker;
@@ -47,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         DataBase_Implementation db = new DataBase_Implementation(this);
 
 
@@ -56,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         customer1.payment_method="card";
         db.Save_Customer(customer1,myRef);
 /*
+
         worker= new Edvisor();
         worker.Name="mavia";
         worker.id=1;
@@ -77,8 +81,6 @@ public class MainActivity extends AppCompatActivity {
 
         db.Save_Edvisor(workers,myRef2);
 
-
-
  */
 
         setContentView(R.layout.activity_main);
@@ -92,8 +94,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void customer_login(View v) {
-
-
 
         Intent intent = new Intent(this, Customer_login.class);
         intent.putExtra("customer",customer1);
@@ -119,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         ////////////////////////////////////// loasd workersssss
+
         myRef2.addValueEventListener(new ValueEventListener() {
             @Override
 
@@ -167,4 +168,12 @@ public class MainActivity extends AppCompatActivity {
       //  unregisterReceiver(receiver);
         super.onDestroy();
     }
+
+    public void worker_chat(View v)
+    {
+        Intent intent = new Intent(this,Worker_chat.class);
+        startActivity(intent);
+    }
+
+
 }

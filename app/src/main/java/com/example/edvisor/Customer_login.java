@@ -46,30 +46,7 @@ public class Customer_login extends AppCompatActivity {
         Intent intent = getIntent();
         //customer = (Customer) intent.getSerializableExtra("customer");
         //worker = (ArrayList<Edvisor>) intent.getSerializableExtra("worker");
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
 
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                System.out.println("worker db ");
-                System.out.println((ArrayList<Edvisor>) dataSnapshot.getValue());
-
-                for(DataSnapshot snap:dataSnapshot.getChildren())
-                {
-                    workerdb.add(snap.getValue(Edvisor.class));
-                }
-                System.out.println("children"+workerdb);
-                System.out.println(workerdb.getClass());
-
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-
-                System.out.println("failed to connect");
-            }
-        });
         ///////////////////////////////////////////////////// current booking
 
 
@@ -125,22 +102,27 @@ public class Customer_login extends AppCompatActivity {
         intentpast = new Intent(this,Past_Appointments.class);
         intentpast.putExtra("customer",customer);
         intentpast.putExtra("worker",worker);
-        LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReciever, new IntentFilter("broadmessage"));
-
-
         startActivity(intentpast);
 
     }
-   public BroadcastReceiver mMessageReciever = new BroadcastReceiver() {
-       @Override
-       public void onReceive(Context context, Intent intent) {
-           System.out.println(intent.getStringExtra("broadmessage"));
-       }
-   };
 
     public void Connect(View v)
     {
         Intent intent = new Intent(this,SiteWebView.class);
         startActivity(intent);
     }
+
+
+    public final BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            // Get extra data included in the Intent
+            workerdb = (ArrayList<Edvisor>) intent.getSerializableExtra("worker");
+
+
+
+        }
+    };
+
+
 }
