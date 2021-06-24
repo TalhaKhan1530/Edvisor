@@ -39,6 +39,16 @@ public class Customer_login extends AppCompatActivity {
     DatabaseReference myRef3=database.getReference().child("booking");
     ArrayList<Booking> bookingdb=new ArrayList<>();
 
+    public BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            // Get extra data included in the Intent
+            workerdb = (ArrayList<Edvisor>) intent.getSerializableExtra("worker");
+
+
+
+        }
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +56,9 @@ public class Customer_login extends AppCompatActivity {
         Intent intent = getIntent();
         //customer = (Customer) intent.getSerializableExtra("customer");
         //worker = (ArrayList<Edvisor>) intent.getSerializableExtra("worker");
+
+        LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver, new IntentFilter("service"));
+
 
         ///////////////////////////////////////////////////// current booking
 
@@ -113,16 +126,7 @@ public class Customer_login extends AppCompatActivity {
     }
 
 
-    public final BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            // Get extra data included in the Intent
-            workerdb = (ArrayList<Edvisor>) intent.getSerializableExtra("worker");
 
-
-
-        }
-    };
 
 
 }
