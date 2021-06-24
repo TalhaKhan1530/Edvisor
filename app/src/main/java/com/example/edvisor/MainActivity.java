@@ -55,34 +55,31 @@ public class MainActivity extends AppCompatActivity {
         customer1.name="noor";
         customer1.payment_method="card";
         db.Save_Customer(customer1,myRef);
-
+/*
         worker= new Edvisor();
-        worker.Name="Bilal";
+        worker.Name="mavia";
         worker.id=1;
         worker.expert_in="Law";
         worker.average_rating=4.3f;
         workers.add(worker);
         worker= new Edvisor();
-        worker.Name="arslan";
+        worker.Name="bilal";
         worker.id=123;
         worker.expert_in="advocate";
         worker.average_rating=4.3f;
         workers.add(worker);
+        worker= new Edvisor();
+        worker.Name="umar";
+        worker.id=456;
+        worker.expert_in="banker";
+        worker.average_rating=4.8f;
+        workers.add(worker);
+
         db.Save_Edvisor(workers,myRef2);
 
 
 
-       /* MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-            }
-        });
-
-        mAdView = findViewById(R.id.adView);
-        */
-        // AdRequest adRequest = new AdRequest.Builder().build();
-        // mAdView.loadAd(adRequest);
-
+ */
 
         setContentView(R.layout.activity_main);
 

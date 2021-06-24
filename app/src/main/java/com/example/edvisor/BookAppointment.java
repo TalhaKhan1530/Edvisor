@@ -31,12 +31,13 @@ public class BookAppointment extends AppCompatActivity {
     DatabaseReference myRef=database.getReference().child("booking");
     ArrayAdapter arrayAdapter;
     ArrayList<Edvisor> arrayList ;
+    Edvisor worker_click=new Edvisor();
    // DataBase_Implementation db=new DataBase_Implementation(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Intent intent = getIntent();
+        Intent intent = getIntent();
        // customer = (Customer) intent.getSerializableExtra("customer");
         //worker = (ArrayList<Edvisor>) intent.getSerializableExtra("worker");
         setContentView(R.layout.activity_book_appointment);
@@ -57,14 +58,13 @@ public class BookAppointment extends AppCompatActivity {
         b1.id=1;
         b1.current_status=true;
         booking2.add(b1);
-        b1.expert_id=2;
-        b1.customer_id=1;
-        b1.id=2;
-        b1.current_status=true;
 
-        booking2.add(b1);
-        myRef.setValue(booking2);
+
         final ArrayList< Booking> bookings=new ArrayList<>();
+
+        worker=new ArrayList<Edvisor>();
+        worker = (ArrayList<Edvisor>) intent.getSerializableExtra("worker");
+
 
         arrayAdapter = new Expert_List_adapter(this,worker);
         list.setAdapter(arrayAdapter);
@@ -75,7 +75,16 @@ public class BookAppointment extends AppCompatActivity {
 
 
                 Context context=getApplicationContext();
-                bookings.add(booking2.get(i));
+                /////////////////////////////////////////////////////////////////////db
+                worker_click= worker.get(i);
+                Booking b1=new Booking();
+                b1.customer_id=1; //because we have 1 customer
+                b1.expert_id=worker_click.id;
+                b1.current_status=true;
+                b1.description=worker_click.expert_in;
+
+
+                bookings.add(b1);
                 myRef.setValue(bookings);
 
                 CharSequence text = "Booking Successful";

@@ -1,12 +1,14 @@
 package com.example.edvisor;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Booking {
+public class Booking implements Serializable {
     public int id;
     public int expert_id;
     public int customer_id;
     public boolean current_status;
+    public String description;
     LocalDateTime startTime;
     LocalDateTime endTime;
 

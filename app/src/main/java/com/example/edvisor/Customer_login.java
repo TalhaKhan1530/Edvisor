@@ -28,13 +28,16 @@ public class Customer_login extends AppCompatActivity {
 
     Customer customer;
     ArrayList<Edvisor> worker=new ArrayList<>();
+    ArrayList<Edvisor> workerdb=new ArrayList<>();
     Intent intentpast ;
+    ArrayList<Edvisor>[] a2 ;
+    Intent intent;
 
     FirebaseDatabase database=FirebaseDatabase.getInstance();
     DatabaseReference myRef=database.getReference().child("worker");
     DatabaseReference myRef2=database.getReference().child("customer");
     DatabaseReference myRef3=database.getReference().child("booking");
-    ArrayList<Booking> booking=new ArrayList<>();
+    ArrayList<Booking> bookingdb=new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,32 @@ public class Customer_login extends AppCompatActivity {
         Intent intent = getIntent();
         //customer = (Customer) intent.getSerializableExtra("customer");
         //worker = (ArrayList<Edvisor>) intent.getSerializableExtra("worker");
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                System.out.println("worker db ");
+                System.out.println((ArrayList<Edvisor>) dataSnapshot.getValue());
+
+                for(DataSnapshot snap:dataSnapshot.getChildren())
+                {
+                    workerdb.add(snap.getValue(Edvisor.class));
+                }
+                System.out.println("children"+workerdb);
+                System.out.println(workerdb.getClass());
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+
+                System.out.println("failed to connect");
+            }
+        });
+        ///////////////////////////////////////////////////// current booking
+
 
 
     }
@@ -51,15 +80,40 @@ public class Customer_login extends AppCompatActivity {
 
         Intent intent = new Intent(this,BookAppointment.class);
         intent.putExtra("customer",customer);
-        intent.putExtra("worker",worker);
+        intent.putExtra("worker",workerdb);
+
+
         startActivity(intent);
     }
     public void Show_Booking_Appointments(View v) {
 
-        Intent intent = new Intent(this,Show_current_Booking.class);
+        intent = new Intent(this,Show_current_Booking.class);
         intent.putExtra("customer",customer);
         intent.putExtra("worker",worker);
-        startActivity(intent);
+
+        myRef3.addValueEventListener(new ValueEventListener() {
+            @Override
+
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for(DataSnapshot snap:dataSnapshot.getChildren())
+                {
+                    bookingdb.add(snap.getValue(Booking.class));
+                }
+                System.out.println("children"+bookingdb);
+                intent.putExtra("booking",bookingdb);
+                startActivity(intent);
+
+            }
+            @Override
+            public void onCancelled(DatabaseError error) {
+
+                System.out.println("failed to connect");
+            }
+        });
+
+
+
     }
     public void chat(View v)
     {
@@ -73,25 +127,6 @@ public class Customer_login extends AppCompatActivity {
         intentpast.putExtra("worker",worker);
         LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReciever, new IntentFilter("broadmessage"));
 
-        myRef3.addValueEventListener(new ValueEventListener() {
-            @Override
-
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                booking = (ArrayList<Booking>) dataSnapshot.getValue();
-                System.out.println("booking "+booking.get(0));
-                intentpast.putExtra("bookingpast",booking);
-
-
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-
-                System.out.println("failed to connect");
-            }
-        });
 
         startActivity(intentpast);
 

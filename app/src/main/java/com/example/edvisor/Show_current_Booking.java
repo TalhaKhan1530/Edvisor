@@ -13,13 +13,15 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class Show_current_Booking extends AppCompatActivity {
-
+    ArrayList<Booking> bookingdb =new ArrayList<>();
     Show_current_booking_ListAdapter myListView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Intent intent = getIntent();
         Customer customer = (Customer) intent.getSerializableExtra("customer");
         //Edvisor worker = (Edvisor) intent.getSerializableExtra("worker");
+        bookingdb = (ArrayList<Booking>) intent.getSerializableExtra("booking");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_current__booking);
 
@@ -40,7 +42,7 @@ public class Show_current_Booking extends AppCompatActivity {
         send.add(o1);
         send.add(o2);
 
-        myListView=new Show_current_booking_ListAdapter(this,send);
+        myListView=new Show_current_booking_ListAdapter(this,bookingdb);
         list.setAdapter(myListView);
 
 
