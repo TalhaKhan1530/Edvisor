@@ -59,6 +59,28 @@ public class Customer_login extends AppCompatActivity {
 
         LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver, new IntentFilter("service"));
 
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                System.out.println("worker db ");
+                System.out.println((ArrayList<Edvisor>) dataSnapshot.getValue());
+                for(DataSnapshot snap:dataSnapshot.getChildren())
+                {
+                    workerdb.add(snap.getValue(Edvisor.class));
+                }
+                System.out.println("children"+workerdb);
+                System.out.println(workerdb.getClass());
+
+                Intent intent2 = new Intent("service");
+                intent2.putExtra("worker",workerdb);
+
+            }
+            @Override
+            public void onCancelled(DatabaseError error) {
+
+                System.out.println("failed to connect");
+            }
+        });
 
         ///////////////////////////////////////////////////// current booking
 

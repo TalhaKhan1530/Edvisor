@@ -19,7 +19,7 @@ public class Show_current_Booking extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         Intent intent = getIntent();
         Customer customer = (Customer) intent.getSerializableExtra("customer");
-        //Edvisor worker = (Edvisor) intent.getSerializableExtra("worker");
+
         bookingdb = (ArrayList<Booking>) intent.getSerializableExtra("booking");
 
         super.onCreate(savedInstanceState);
@@ -27,7 +27,7 @@ public class Show_current_Booking extends AppCompatActivity {
 
 
         ListView list=(ListView) findViewById(R.id.current_booking);
-
+/*
         Booking o1=new Booking();
         o1.id=1;
         o1.customer_id=1;
@@ -42,7 +42,10 @@ public class Show_current_Booking extends AppCompatActivity {
         send.add(o1);
         send.add(o2);
 
+ */
+
         myListView=new Show_current_booking_ListAdapter(this,bookingdb);
+        System.out.println("current"+bookingdb);
         list.setAdapter(myListView);
 
 

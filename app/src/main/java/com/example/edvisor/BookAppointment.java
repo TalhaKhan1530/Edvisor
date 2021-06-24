@@ -38,27 +38,12 @@ public class BookAppointment extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
-       // customer = (Customer) intent.getSerializableExtra("customer");
+        //customer = (Customer) intent.getSerializableExtra("customer");
         //worker = (ArrayList<Edvisor>) intent.getSerializableExtra("worker");
         setContentView(R.layout.activity_book_appointment);
         list =(ListView) findViewById( R.id.listbooking);
 
-
-        Edvisor worker2=new Edvisor();
-        worker2.id=123;
-        worker2.average_rating=3;
-        worker2.Name="talha";
-        worker=new ArrayList<Edvisor>();
-        worker.add(worker2);
-        worker.add(worker2);
-
         Booking b1=new Booking();
-        b1.expert_id=1;
-        b1.customer_id=1;
-        b1.id=1;
-        b1.current_status=true;
-        booking2.add(b1);
-
 
         final ArrayList< Booking> bookings=new ArrayList<>();
 
@@ -82,8 +67,6 @@ public class BookAppointment extends AppCompatActivity {
                 b1.expert_id=worker_click.id;
                 b1.current_status=true;
                 b1.description=worker_click.expert_in;
-
-
                 bookings.add(b1);
                 myRef.setValue(bookings);
 
